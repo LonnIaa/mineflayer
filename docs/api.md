@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
 - [API](#api)
   - [Enums](#enums)
@@ -299,7 +300,7 @@
       - [bot.tossStack(item)](#bottossstackitem)
       - [bot.toss(itemType, metadata, count)](#bottossitemtype-metadata-count)
       - [bot.elytraFly()](#botelytrafly)
-      - [bot.dig(block, [forceLook], [digFace])](#botdigblock-forcelook-digface)
+      - [bot.dig(block, [forceLook = true], [digFace])](#botdigblock-forcelook--true-digface)
       - [bot.stopDigging()](#botstopdigging)
       - [bot.digTime(block)](#botdigtimeblock)
       - [bot.acceptResourcePack()](#botacceptresourcepack)
@@ -360,17 +361,20 @@
 ## Enums
 
 These enums are stored in the language independent [minecraft-data](https://github.com/PrismarineJS/minecraft-data) project,
- and accessed through [node-minecraft-data](https://github.com/PrismarineJS/node-minecraft-data).
+and accessed through [node-minecraft-data](https://github.com/PrismarineJS/node-minecraft-data).
 
 ### minecraft-data
+
 The data is available in [node-minecraft-data](https://github.com/PrismarineJS/node-minecraft-data) module
 
 `require('minecraft-data')(bot.version)` gives you access to it.
 
 ### mcdata.blocks
+
 blocks indexed by id
 
 ### mcdata.items
+
 items indexed by id
 
 ### mcdata.materials
@@ -379,15 +383,19 @@ The key is the material. The value is an object with the key as the item id
 of the tool and the value as the efficiency multiplier.
 
 ### mcdata.recipes
+
 recipes indexed by id
 
 ### mcdata.instruments
+
 instruments indexed by id
 
 ### mcdata.biomes
+
 biomes indexed by id
 
 ### mcdata.entities
+
 entities indexed by id
 
 ## Classes
@@ -398,9 +406,9 @@ See [andrewrk/node-vec3](https://github.com/andrewrk/node-vec3)
 
 All points in mineflayer are supplied as instances of this class.
 
- * x - south
- * y - up
- * z - west
+- x - south
+- y - up
+- z - west
 
 Functions and methods which require a point argument accept `Vec3` instances
 as well as an array with 3 values, and an object with `x`, `y`, and `z`
@@ -431,6 +439,7 @@ The skin data is stored in the `skinData` property of the player object, if pres
 See [prismarine-block](https://github.com/PrismarineJS/prismarine-block)
 
 Also `block.blockEntity` is additional field with block entity data as `Object`. The data in this varies between versions.
+
 ```js
 // sign.blockEntity example from 1.19
 {
@@ -444,6 +453,7 @@ Also `block.blockEntity` is additional field with block entity data as `Object`.
 ```
 
 Note if you want to get a sign's plain text, you can use [`block.getSignText()`](https://github.com/PrismarineJS/prismarine-block/blob/master/doc/API.md#sign) instead of unstable blockEntity data.
+
 ```java
 > block = bot.blockAt(new Vec3(0, 60, 0)) // assuming a sign is here
 > block.getSignText()
@@ -466,19 +476,19 @@ See [prismarine-windows](https://github.com/PrismarineJS/prismarine-windows)
 
 This function returns a `Promise`, with `void` as its argument when done depositing.
 
- * `itemType` - numerical item id
- * `metadata` - numerical value. `null` means match anything.
- * `count` - how many to deposit. `null` is an alias to 1.
- * `nbt` - match nbt data. `null` is do not match nbt.
+- `itemType` - numerical item id
+- `metadata` - numerical value. `null` means match anything.
+- `count` - how many to deposit. `null` is an alias to 1.
+- `nbt` - match nbt data. `null` is do not match nbt.
 
 #### window.withdraw(itemType, metadata, count, nbt)
 
 This function returns a `Promise`, with `void` as its argument when done withdrawing. Throws and error if the bot has no free room in its inventory.
 
- * `itemType` - numerical item id
- * `metadata` - numerical value. `null` means match anything.
- * `count` - how many to withdraw. `null` is an alias to 1.
- * `nbt` - match nbt data. `null` is do not match nbt.
+- `itemType` - numerical item id
+- `metadata` - numerical value. `null` means match anything.
+- `count` - how many to withdraw. `null` is an alias to 1.
+- `nbt` - match nbt data. `null` is do not match nbt.
 
 #### window.close()
 
@@ -504,16 +514,13 @@ Fires when `furnace.fuel` and/or `furnace.progress` update.
 
 This function returns a `Promise`, with `item` as its argument upon completion.
 
-
 #### furnace.takeFuel()
 
 This function returns a `Promise`, with `item` as its argument upon completion.
 
-
 #### furnace.takeOutput()
 
 This function returns a `Promise`, with `item` as its argument upon completion.
-
 
 #### furnace.putInput(itemType, metadata, count)
 
@@ -572,37 +579,34 @@ Looks like:
 ```js
 [
   {
-    level: 3
+    level: 3,
   },
   {
-    level: 4
+    level: 4,
   },
   {
-    level: 9
-  }
-]
+    level: 9,
+  },
+];
 ```
 
 #### enchantmentTable.enchant(choice)
 
 This function returns a `Promise`, with `item` as its argument when the item has been enchanted.
 
- * `choice` - [0-2], the index of the enchantment you want to pick.
+- `choice` - [0-2], the index of the enchantment you want to pick.
 
 #### enchantmentTable.takeTargetItem()
 
 This function returns a `Promise`, with `item` as its argument upon completion.
 
-
 #### enchantmentTable.putTargetItem(item)
 
 This function returns a `Promise`, with `void` as its argument upon completion.
 
-
 #### enchantmentTable.putLapis(item)
 
 This function returns a `Promise`, with `void` as its argument upon completion.
-
 
 ### mineflayer.anvil
 
@@ -613,11 +617,9 @@ See `bot.openAnvil(anvilBlock)`.
 
 This function returns a `Promise`, with `void` as its argument upon completion.
 
-
 #### anvil.combine(item[, name])
 
 This function returns a `Promise`, with `void` as its argument upon completion.
-
 
 #### villager "ready"
 
@@ -638,7 +640,7 @@ Looks like:
     secondaryInput: null,
     disabled: false,
     tooluses: 0,
-    maxTradeuses: 7
+    maxTradeuses: 7,
   },
   {
     firstInput: Item,
@@ -647,7 +649,7 @@ Looks like:
     secondaryInput: null,
     disabled: false,
     tooluses: 0,
-    maxTradeuses: 7
+    maxTradeuses: 7,
   },
   {
     firstInput: Item,
@@ -656,12 +658,13 @@ Looks like:
     secondaryInput: Item,
     disabled: false,
     tooluses: 0,
-    maxTradeuses: 7
-  }
-]
+    maxTradeuses: 7,
+  },
+];
 ```
 
 #### villager.trade(tradeIndex, [times])
+
 Is the same as [bot.trade(villagerInstance, tradeIndex, [times])](#bottradevillagerinstance-tradeindex-times)
 
 ### mineflayer.ScoreBoard
@@ -677,6 +680,7 @@ The title of the scoreboard (does not always equal the name)
 #### ScoreBoard.itemsMap
 
 An object with all items in the scoreboard in it
+
 ```js
 {
   wvffle: { name: 'wvffle', value: 3 },
@@ -687,11 +691,12 @@ An object with all items in the scoreboard in it
 #### ScoreBoard.items
 
 An array with all sorted items in the scoreboard in it
+
 ```js
 [
-  { name: 'dzikoysk', value: 6 },
-  { name: 'wvffle', value: 3 }
-]
+  { name: "dzikoysk", value: 6 },
+  { name: "wvffle", value: 3 },
+];
 ```
 
 ### mineflayer.Team
@@ -796,37 +801,38 @@ Particle speed in a random direction
 
 Create and return an instance of the class bot.
 `options` is an object containing the optional properties :
- * username : default to 'Player'
- * port : default to 25565
- * password : can be omitted (if the tokens are also omitted then it tries to connect in offline mode)
- * host : default to localhost
- * version : default to automatically guessing the version of the server. Example of value : "1.12.2"
- * auth : default to 'mojang', can also be 'microsoft'
- * clientToken : generated if a password is given
- * accessToken : generated if a password is given
- * logErrors : true by default, catch errors and log them
- * hideErrors : true by default, do not log errors (even if logErrors is true)
- * keepAlive : send keep alive packets : default to true
- * checkTimeoutInterval : default to `30*1000` (30s), check if keepalive received at that period, disconnect otherwise.
- * loadInternalPlugins : defaults to true
- * storageBuilder : an optional function, takes as argument version and worldName and return an instance of something with the same API as prismarine-provider-anvil. Will be used to save the world.
- * client : an instance of node-minecraft-protocol, if not specified, mineflayer makes its own client. This can be used to enable using mineflayer through a proxy of many clients or a vanilla client and a mineflayer client.
- * brand : the brand name for the client to use. Defaults to vanilla. Can be used to simulate custom clients for servers that require it.
- * respawn : when set to false disables bot from automatically respawning, defaults to true.
- * plugins : object : defaults to {}
-   - pluginName : false : don't load internal plugin with given name ie. `pluginName`
-   - pluginName : true : load internal plugin with given name ie. `pluginName` even though loadInternalplugins is set to false
-   - pluginName : external plugin inject function : loads external plugin, overrides internal plugin with given name ie. `pluginName`
- * physicsEnabled : true by default, should the bot be affected by physics? can later be modified via bot.physicsEnabled
- * [chat](#bot.settings.chat)
- * [colorsEnabled](#bot.settings.colorsEnabled)
- * [viewDistance](#bot.settings.viewDistance)
- * [difficulty](#bot.settings.difficulty)
- * [skinParts](#bot.settings.skinParts)
- * [enableTextFiltering](#bot.settings.enableTextFiltering)
- * [enableServerListing](#bot.settings.enableServerListing)
- * chatLengthLimit : the maximum amount of characters that can be sent in a single message. If this is not set, it will be 100 in < 1.11 and 256 in >= 1.11.
- * defaultChatPatterns: defaults to true, set to false to not add the patterns such as chat and whisper
+
+- username : default to 'Player'
+- port : default to 25565
+- password : can be omitted (if the tokens are also omitted then it tries to connect in offline mode)
+- host : default to localhost
+- version : default to automatically guessing the version of the server. Example of value : "1.12.2"
+- auth : default to 'mojang', can also be 'microsoft'
+- clientToken : generated if a password is given
+- accessToken : generated if a password is given
+- logErrors : true by default, catch errors and log them
+- hideErrors : true by default, do not log errors (even if logErrors is true)
+- keepAlive : send keep alive packets : default to true
+- checkTimeoutInterval : default to `30*1000` (30s), check if keepalive received at that period, disconnect otherwise.
+- loadInternalPlugins : defaults to true
+- storageBuilder : an optional function, takes as argument version and worldName and return an instance of something with the same API as prismarine-provider-anvil. Will be used to save the world.
+- client : an instance of node-minecraft-protocol, if not specified, mineflayer makes its own client. This can be used to enable using mineflayer through a proxy of many clients or a vanilla client and a mineflayer client.
+- brand : the brand name for the client to use. Defaults to vanilla. Can be used to simulate custom clients for servers that require it.
+- respawn : when set to false disables bot from automatically respawning, defaults to true.
+- plugins : object : defaults to {}
+  - pluginName : false : don't load internal plugin with given name ie. `pluginName`
+  - pluginName : true : load internal plugin with given name ie. `pluginName` even though loadInternalplugins is set to false
+  - pluginName : external plugin inject function : loads external plugin, overrides internal plugin with given name ie. `pluginName`
+- physicsEnabled : true by default, should the bot be affected by physics? can later be modified via bot.physicsEnabled
+- [chat](#bot.settings.chat)
+- [colorsEnabled](#bot.settings.colorsEnabled)
+- [viewDistance](#bot.settings.viewDistance)
+- [difficulty](#bot.settings.difficulty)
+- [skinParts](#bot.settings.skinParts)
+- [enableTextFiltering](#bot.settings.enableTextFiltering)
+- [enableServerListing](#bot.settings.enableServerListing)
+- chatLengthLimit : the maximum amount of characters that can be sent in a single message. If this is not set, it will be 100 in < 1.11 and 256 in >= 1.11.
+- defaultChatPatterns: defaults to true, set to false to not add the patterns such as chat and whisper
 
 ### Properties
 
@@ -849,7 +855,6 @@ comparison.
 Fires for a specific point. Both `oldBlock` and `newBlock` provided for
 comparison. All listeners receive null for `oldBlock` and `newBlock` and get automatically removed when the world is unloaded.
 `oldBlock` may be `null` with normal block updates.
-
 
 #### bot.entity
 
@@ -906,6 +911,7 @@ Enable physics, default true.
 #### bot.player
 
 Bot's player object
+
 ```js
 {
   username: 'player',
@@ -958,17 +964,18 @@ For thunderstorms, both `bot.rainState` and `bot.thunderState` will change.
 
 This is an array of pattern objects, of the following format:
 { /regex/, "chattype", "description")
- * /regex/ - a regular expression pattern, that should have at least two capture groups
- * 'chattype' - the type of chat the pattern matches, ex "chat" or "whisper", but can be anything.
- * 'description' - description of what the pattern is for, optional.
+
+- /regex/ - a regular expression pattern, that should have at least two capture groups
+- 'chattype' - the type of chat the pattern matches, ex "chat" or "whisper", but can be anything.
+- 'description' - description of what the pattern is for, optional.
 
 #### bot.settings.chat
 
 Choices:
 
- * `enabled` (default)
- * `commandsOnly`
- * `disabled`
+- `enabled` (default)
+- `commandsOnly`
+- `disabled`
 
 #### bot.settings.colorsEnabled
 
@@ -978,10 +985,11 @@ Default true, whether or not you receive color codes in chats from the server.
 
 Can be a string listed below or a positive number.
 Choices:
- * `far` (default)
- * `normal`
- * `short`
- * `tiny`
+
+- `far` (default)
+- `normal`
+- `short`
+- `tiny`
 
 #### bot.settings.difficulty
 
@@ -1008,9 +1016,13 @@ If you have a cape you can turn it off by setting this to false.
 ##### bot.settings.skinParts.showHat - boolean
 
 #### bot.settings.enableTextFiltering - boolean
+
 Unused, defaults to false in Notchian (Vanilla) client.
+
 #### bot.settings.enableServerListing - boolean
+
 This setting is sent to the server to determine whether the player should show up in server listings
+
 #### bot.experience.level
 
 #### bot.experience.points
@@ -1136,10 +1148,10 @@ All scoreboards known to the bot in an object scoreboard name -> scoreboard.
 
 All scoreboards known to the bot in an object scoreboard displaySlot -> scoreboard.
 
- * `belowName` - scoreboard placed in belowName
- * `sidebar` - scoreboard placed in sidebar
- * `list` - scoreboard placed in list
- * `0-18` - slots defined in [protocol](https://minecraft.wiki/w/Protocol#Display_Scoreboard)
+- `belowName` - scoreboard placed in belowName
+- `sidebar` - scoreboard placed in sidebar
+- `list` - scoreboard placed in list
+- `0-18` - slots defined in [protocol](https://minecraft.wiki/w/Protocol#Display_Scoreboard)
 
 #### bot.teams
 
@@ -1161,54 +1173,55 @@ Setting values for this object internally calls [bot.setControlState](#botsetcon
 
 Only emitted when a player chats publicly.
 
- * `username` - who said the message (compare with `bot.username` to ignore your own chat)
- * `message` - stripped of all color and control characters
- * `translate` - chat message type. Null for most bukkit chat messages
- * `jsonMsg` - unmodified JSON message from the server
- * `matches` - array of returned matches from regular expressions. May be null
+- `username` - who said the message (compare with `bot.username` to ignore your own chat)
+- `message` - stripped of all color and control characters
+- `translate` - chat message type. Null for most bukkit chat messages
+- `jsonMsg` - unmodified JSON message from the server
+- `matches` - array of returned matches from regular expressions. May be null
 
 #### "whisper" (username, message, translate, jsonMsg, matches)
 
 Only emitted when a player chats to you privately.
 
- * `username` - who said the message
- * `message` - stripped of all color and control characters
- * `translate` - chat message type. Null for most bukkit chat messages
- * `jsonMsg` - unmodified JSON message from the server
- * `matches` - array of returned matches from regular expressions. May be null
+- `username` - who said the message
+- `message` - stripped of all color and control characters
+- `translate` - chat message type. Null for most bukkit chat messages
+- `jsonMsg` - unmodified JSON message from the server
+- `matches` - array of returned matches from regular expressions. May be null
 
 #### "actionBar" (jsonMsg, verified)
 
 Emitted for every server message which appears on the Action Bar.
 
- * `jsonMsg` - unmodified JSON message from the server
- * `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
+- `jsonMsg` - unmodified JSON message from the server
+- `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
 
 #### "message" (jsonMsg, position, sender, verified)
 
 Emitted for every server message, including chats.
 
- * `jsonMsg` - [ChatMessage](https://github.com/PrismarineJS/prismarine-chat) object containing the formatted chat message. Might additionally have the following properties:
-   * unsigned - Unsigned ChatMessage object. Only present in 1.19.2+, and only when the server allows insecure chat and the server modified the chat message without the user's signature
+- `jsonMsg` - [ChatMessage](https://github.com/PrismarineJS/prismarine-chat) object containing the formatted chat message. Might additionally have the following properties:
+  - unsigned - Unsigned ChatMessage object. Only present in 1.19.2+, and only when the server allows insecure chat and the server modified the chat message without the user's signature
 
- * `position` - (>= 1.8.1): position of Chat message can be
-   * chat
-   * system
-   * game_info
+- `position` - (>= 1.8.1): position of Chat message can be
+  - chat
+  - system
+  - game_info
 
- * `sender` - UUID of sender if known (1.16+), else null
+- `sender` - UUID of sender if known (1.16+), else null
 
- * `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
+- `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
 
 #### "messagestr" (message, messagePosition, jsonMsg, sender, verified)
 
 Alias for the "message" event but it calls .toString() on the prismarine-message object to get a string for the message before emitting.
 
- * `sender` - UUID of sender if known (1.16+), else null
+- `sender` - UUID of sender if known (1.16+), else null
 
- * `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
+- `verified` -> null if non signed, true if signed and correct, false if signed and incorrect
 
 #### "inject_allowed"
+
 Fires when the index file has been loaded, you can load mcData and plugins here but it's better to wait for "spawn" event.
 
 #### "login"
@@ -1243,23 +1256,23 @@ Emitted when the server sends a resource pack.
 
 Emitted when the server sends a title
 
-* `title` - title's text
-* `type` - title's type "subtitle", "title"
+- `title` - title's text
+- `type` - title's type "subtitle", "title"
 
 #### "title_times" (fadeIn, stay, fadeOut)
 
 Emitted when the server sends a title times packet (i.e., when the fade-in, stay, and fade-out times for titles are set or updated).
 
- * `fadeIn` - fade-in time in ticks (number)
- * `stay` - stay time in ticks (number)
- * `fadeOut` - fade-out time in ticks (number)
+- `fadeIn` - fade-in time in ticks (number)
+- `stay` - stay time in ticks (number)
+- `fadeOut` - fade-out time in ticks (number)
 
 Example:
 
 ```js
-bot.on('title_times', (fadeIn, stay, fadeOut) => {
-  console.log(`Title times: fadeIn=${fadeIn}, stay=${stay}, fadeOut=${fadeOut}`)
-})
+bot.on("title_times", (fadeIn, stay, fadeOut) => {
+  console.log(`Title times: fadeIn=${fadeIn}, stay=${stay}, fadeOut=${fadeOut}`);
+});
 ```
 
 #### "title_clear"
@@ -1317,50 +1330,76 @@ Fires when your oxygen level change.
 Fires when an attribute of an entity changes.
 
 #### "entitySwingArm" (entity)
+
 #### "entityHurt" (entity)
+
 #### "entityDead" (entity)
+
 #### "entityTaming" (entity)
+
 #### "entityTamed" (entity)
+
 #### "entityShakingOffWater" (entity)
+
 #### "entityEatingGrass" (entity)
+
 #### "entityHandSwap" (entity)
+
 #### "entityWake" (entity)
+
 #### "entityEat" (entity)
+
 #### "entityCriticalEffect" (entity)
+
 #### "entityMagicCriticalEffect" (entity)
+
 #### "entityCrouch" (entity)
+
 #### "entityUncrouch" (entity)
+
 #### "entityEquip" (entity)
+
 #### "entitySleep" (entity)
+
 #### "entitySpawn" (entity)
+
 #### "entityElytraFlew" (entity)
 
 An entity started elytra flying.
 
 #### "itemDrop" (entity)
+
 #### "playerCollect" (collector, collected)
 
 An entity picked up an item.
 
- * `collector` - entity that picked up the item.
- * `collected` - the entity that was the item on the ground.
+- `collector` - entity that picked up the item.
+- `collected` - the entity that was the item on the ground.
 
 #### "entityGone" (entity)
+
 #### "entityMoved" (entity)
+
 #### "entityDetach" (entity, vehicle)
+
 #### "entityAttach" (entity, vehicle)
 
 An entity is attached to a vehicle, such as a mine cart
 or boat.
 
- * `entity` - the entity hitching a ride
- * `vehicle` - the entity that is the vehicle
+- `entity` - the entity hitching a ride
+- `vehicle` - the entity that is the vehicle
 
 #### "entityUpdate" (entity)
+
 #### "entityEffect" (entity, effect)
+
 #### "entityEffectEnd" (entity, effect)
+
 #### "playerJoined" (player)
+
 #### "playerUpdated" (player)
+
 #### "playerLeft" (player)
 
 #### "blockUpdate" (oldBlock, newBlock)
@@ -1385,6 +1424,7 @@ comparison.
 Note that `oldBlock` may be `null`.
 
 #### "chunkColumnLoad" (point)
+
 #### "chunkColumnUnload" (point)
 
 Fires when a chunk has updated. `point` is the coordinates to the corner
@@ -1394,70 +1434,71 @@ of the chunk with the smallest x, y, and z values.
 
 Fires when the client hears a named sound effect.
 
- * `soundName`: name of the sound effect
- * `position`: a Vec3 instance where the sound originates
- * `volume`: floating point volume, 1.0 is 100%
- * `pitch`: integer pitch, 63 is 100%
+- `soundName`: name of the sound effect
+- `position`: a Vec3 instance where the sound originates
+- `volume`: floating point volume, 1.0 is 100%
+- `pitch`: integer pitch, 63 is 100%
 
 #### "hardcodedSoundEffectHeard" (soundId, soundCategory, position, volume, pitch)
 
-  Fires when the client hears a hardcoded sound effect.
+Fires when the client hears a hardcoded sound effect.
 
-   * `soundId`: id of the sound effect
-   * `soundCategory`: category of the sound effect
-   * `position`: a Vec3 instance where the sound originates
-   * `volume`: floating point volume, 1.0 is 100%
-   * `pitch`: integer pitch, 63 is 100%
+- `soundId`: id of the sound effect
+- `soundCategory`: category of the sound effect
+- `position`: a Vec3 instance where the sound originates
+- `volume`: floating point volume, 1.0 is 100%
+- `pitch`: integer pitch, 63 is 100%
 
 #### "noteHeard" (block, instrument, pitch)
 
 Fires when a note block goes off somewhere.
 
- * `block`: a Block instance, the block that emitted the noise
- * `instrument`:
-   - `id`: integer id
-   - `name`: one of [`harp`, `doubleBass`, `snareDrum`, `sticks`, `bassDrum`].
- * `pitch`: The pitch of the note (between 0-24 inclusive where 0 is the
-   lowest and 24 is the highest). More information about how the pitch values
-   correspond to notes in real life are available on the
-   [official Minecraft wiki](http://minecraft.wiki/w/Note_Block).
+- `block`: a Block instance, the block that emitted the noise
+- `instrument`:
+  - `id`: integer id
+  - `name`: one of [`harp`, `doubleBass`, `snareDrum`, `sticks`, `bassDrum`].
+- `pitch`: The pitch of the note (between 0-24 inclusive where 0 is the
+  lowest and 24 is the highest). More information about how the pitch values
+  correspond to notes in real life are available on the
+  [official Minecraft wiki](http://minecraft.wiki/w/Note_Block).
 
 #### "pistonMove" (block, isPulling, direction)
 
 #### "chestLidMove" (block, isOpen, block2)
-* `block`: a Block instance, the block whose lid opened. The right block if it's a double chest
-* `isOpen`: number of players that have the chest open. 0 if it's closed
-* `block2`: a Block instance, the other half of the block whose lid opened. null if it's not a double chest
+
+- `block`: a Block instance, the block whose lid opened. The right block if it's a double chest
+- `isOpen`: number of players that have the chest open. 0 if it's closed
+- `block2`: a Block instance, the other half of the block whose lid opened. null if it's not a double chest
 
 #### "blockBreakProgressObserved" (block, destroyStage, entity)
 
 Fires when the client observes a block in the process of being broken.
 
- * `block`: a Block instance, the block being broken
- * `destroyStage`: integer corresponding to the destroy progress (0-9)
- * `entity`: the entity which is breaking the block.
+- `block`: a Block instance, the block being broken
+- `destroyStage`: integer corresponding to the destroy progress (0-9)
+- `entity`: the entity which is breaking the block.
 
 #### "blockBreakProgressEnd" (block, entity)
 
 Fires when the client observes a block stops being broken.
 This occurs whether the process was completed or aborted.
 
- * `block`: a Block instance, the block no longer being broken
- * `entity`: the entity which has stopped breaking the block
+- `block`: a Block instance, the block no longer being broken
+- `entity`: the entity which has stopped breaking the block
 
 #### "diggingCompleted" (block)
 
- * `block` - the block that no longer exists
+- `block` - the block that no longer exists
 
 #### "diggingAborted" (block)
 
- * `block` - the block that still exists
+- `block` - the block that still exists
 
 #### "usedFirework" (fireworkEntityId)
 
 Fires when the bot uses a firework while elytra flying.
 
- * `fireworkEntityId` - the entity id of the firework.
+- `fireworkEntityId` - the entity id of the firework.
 
 #### "move"
 
@@ -1589,24 +1630,28 @@ This function returns a `Promise`, with `void` as its argument when many chunks 
 Deprecated, use `blockAtCursor` instead.
 
 Returns the block at which bot is looking at or `null`
- * `maxSteps` - Number of steps to raytrace, defaults to 256.
- * `vectorLength` - Length of raytracing vector, defaults to `5/16`.
+
+- `maxSteps` - Number of steps to raytrace, defaults to 256.
+- `vectorLength` - Length of raytracing vector, defaults to `5/16`.
 
 #### bot.blockAtCursor(maxDistance=256)
 
 Returns the block at which bot is looking at or `null`
- * `maxDistance` - The maximum distance the block can be from the eye, defaults to 256.
+
+- `maxDistance` - The maximum distance the block can be from the eye, defaults to 256.
 
 #### bot.entityAtCursor(maxDistance=3.5)
 
 Returns the entity at which bot is looking at or `null`
- * `maxDistance` - The maximum distance the entity can be from the eye, defaults to 3.5.
+
+- `maxDistance` - The maximum distance the entity can be from the eye, defaults to 3.5.
 
 #### bot.blockAtEntityCursor(entity=bot.entity, maxDistance=256)
 
 Returns the block at which specific entity is looking at or `null`
- * `entity` - Entity data as `Object`
- * `maxDistance` - The maximum distance the block can be from the eye, defaults to 256.
+
+- `entity` - Entity data as `Object`
+- `maxDistance` - The maximum distance the block can be from the eye, defaults to 256.
 
 #### bot.canSeeBlock(block)
 
@@ -1615,14 +1660,15 @@ Returns true or false depending on whether the bot can see the specified `block`
 #### bot.findBlocks(options)
 
 Finds the closest blocks from the given point.
- * `options` - Options for the search:
-   - `point` - The start position of the search (center). Default is the bot position.
-   - `matching` - A function that returns true if the given block is a match. Also supports this value being a block id or array of block ids.
-   - `useExtraInfo` - To preserve backward compatibility can result in two behavior depending on the type
-      - **boolean** - Provide your `matching` function more data - noticeably slower approach
-      - **function** - Creates two stage matching, if block passes `matching` function it is passed further to `useExtraInfo` with additional info
-   - `maxDistance` - The furthest distance for the search, defaults to 16.
-   - `count` - Number of blocks to find before returning the search. Default to 1. Can return less if not enough blocks are found exploring the whole area.
+
+- `options` - Options for the search:
+  - `point` - The start position of the search (center). Default is the bot position.
+  - `matching` - A function that returns true if the given block is a match. Also supports this value being a block id or array of block ids.
+  - `useExtraInfo` - To preserve backward compatibility can result in two behavior depending on the type
+    - **boolean** - Provide your `matching` function more data - noticeably slower approach
+    - **function** - Creates two stage matching, if block passes `matching` function it is passed further to `useExtraInfo` with additional info
+  - `maxDistance` - The furthest distance for the search, defaults to 16.
+  - `count` - Number of blocks to find before returning the search. Default to 1. Can return less if not enough blocks are found exploring the whole area.
 
 Returns an array (possibly empty) with the found block coordinates (not the blocks). The array is sorted (closest first)
 
@@ -1639,14 +1685,14 @@ Returns whether `block` is diggable and within range.
 Returns a list of `Recipe` instances that you could use to craft `itemType`
 with `metadata`.
 
- * `itemType` - numerical item id of the thing you want to craft
- * `metadata` - the numerical metadata value of the item you want to craft
-   `null` matches any metadata.
- * `minResultCount` - based on your current inventory, any recipe from the
-   returned list will be able to produce this many items. `null` is an
-   alias for `1`.
- * `craftingTable` - a `Block` instance. If `null`, only recipes that can
-   be performed in your inventory window will be included in the list.
+- `itemType` - numerical item id of the thing you want to craft
+- `metadata` - the numerical metadata value of the item you want to craft
+  `null` matches any metadata.
+- `minResultCount` - based on your current inventory, any recipe from the
+  returned list will be able to produce this many items. `null` is an
+  alias for `1`.
+- `craftingTable` - a `Block` instance. If `null`, only recipes that can
+  be performed in your inventory window will be included in the list.
 
 #### bot.recipesAll(itemType, metadata, craftingTable)
 
@@ -1657,8 +1703,9 @@ The same as bot.recipesFor except that it does not check whether the bot has eno
 Return the nearest entity to the bot, matching the function (default to all entities). Return null if no entity is found.
 
 Example:
+
 ```js
-const cow = bot.nearestEntity(entity => entity.name.toLowerCase() === 'cow') // we use .toLowercase() because in 1.8 cow was capitalized, for newer versions that can be omitted
+const cow = bot.nearestEntity((entity) => entity.name.toLowerCase() === "cow"); // we use .toLowercase() because in 1.8 cow was capitalized, for newer versions that can be omitted
 ```
 
 ### Methods
@@ -1666,7 +1713,8 @@ const cow = bot.nearestEntity(entity => entity.name.toLowerCase() === 'cow') // 
 #### bot.end(reason)
 
 End the connection with the server.
-* `reason` - Optional string that states the reason of the end.
+
+- `reason` - Optional string that states the reason of the end.
 
 #### bot.quit(reason)
 
@@ -1677,10 +1725,11 @@ Gracefully disconnect from the server with the given reason (defaults to 'discon
 This function returns a `Promise`, with `matches` as its argument upon completion.
 
 Requests chat completion from the server.
- * `str` - String to complete.
- * `assumeCommand` - Field sent to server, defaults to false.
- * `sendBlockInSight` - Field sent to server, defaults to true. Set this option to false if you want more performance.
- * `timeout` - Timeout in milliseconds, after which the function will return an empty array, defaults to 5000.
+
+- `str` - String to complete.
+- `assumeCommand` - Field sent to server, defaults to false.
+- `sendBlockInSight` - Field sent to server, defaults to true. Set this option to false if you want more performance.
+- `timeout` - Timeout in milliseconds, after which the function will return an empty array, defaults to 5000.
 
 #### bot.chat(message)
 
@@ -1695,22 +1744,24 @@ Shortcut for "/tell <username>". All split messages will be whispered to usernam
 Deprecated, use `addChatPattern` instead.
 
 Adds a regex pattern to the bot's chat matching. Useful for bukkit servers where the chat format changes a lot.
- * `pattern` - regular expression to match chat
- * `chatType` - the event the bot emits when the pattern matches. Eg: "chat" or "whisper"
- * 'description ' - Optional, describes what the pattern is for
+
+- `pattern` - regular expression to match chat
+- `chatType` - the event the bot emits when the pattern matches. Eg: "chat" or "whisper"
+- 'description ' - Optional, describes what the pattern is for
 
 #### bot.addChatPattern(name, pattern, chatPatternOptions)
 
-** this is an alias of `bot.addChatPatternSet(name, [pattern], chatPatternOptions)`
+\*\* this is an alias of `bot.addChatPatternSet(name, [pattern], chatPatternOptions)`
 
 make an event that is called every time the pattern is matched to a message,
 the event will be called `"chat:name"`, with name being the name passed
-* `name` - the name used to listen for the event
-* `pattern` - regular expression to match to messages received
-* `chatPatternOptions` - object
-  * `repeat` - defaults to true, whether to listen for this event after the first match
-  * `parse` - instead of returning the actual message that was matched, return the capture groups from the regex
-  * `deprecated` - (**unstable**) used by bot.chatAddPattern to keep compatibility, likely to be removed
+
+- `name` - the name used to listen for the event
+- `pattern` - regular expression to match to messages received
+- `chatPatternOptions` - object
+  - `repeat` - defaults to true, whether to listen for this event after the first match
+  - `parse` - instead of returning the actual message that was matched, return the capture groups from the regex
+  - `deprecated` - (**unstable**) used by bot.chatAddPattern to keep compatibility, likely to be removed
 
 returns a number which can be used with bot.removeChatPattern() to only delete this pattern
 
@@ -1720,11 +1771,12 @@ returns a number which can be used with bot.removeChatPattern() to only delete t
 
 make an event that is called every time all patterns have been matched to messages,
 the event will be called `"chat:name"`, with name being the name passed
-* `name` - the name used to listen for the event
-* `patterns` - array of regular expression to match to messages received
-* `chatPatternOptions` - object
-  * `repeat` - defaults to true, whether to listen for this event after the first match
-  * `parse` - instead of returning the actual message that was matched, return the capture groups from the regex
+
+- `name` - the name used to listen for the event
+- `patterns` - array of regular expression to match to messages received
+- `chatPatternOptions` - object
+  - `repeat` - defaults to true, whether to listen for this event after the first match
+  - `parse` - instead of returning the actual message that was matched, return the capture groups from the regex
 
 returns a number which can be used with bot.removeChatPattern() to only delete this patternset
 
@@ -1733,7 +1785,8 @@ returns a number which can be used with bot.removeChatPattern() to only delete t
 #### bot.removeChatPattern(name)
 
 removes a chat pattern(s)
-* `name` : string or number
+
+- `name` : string or number
 
 if name is a string, all patterns that have that name will be removed
 else if name is a number, only that exact pattern will be removed
@@ -1745,12 +1798,12 @@ promise that is resolved when one of the messages passed as an arg is resolved
 Example:
 
 ```js
-async function wait () {
-  await bot.awaitMessage('<flatbot> hello world') // resolves on "hello world" in chat by flatbot
-  await bot.awaitMessage(['<flatbot> hello', '<flatbot> world']) // resolves on "hello" or "world" in chat by flatbot
-  await bot.awaitMessage(['<flatbot> hello', '<flatbot> world'], ['<flatbot> im', '<flatbot> batman']) // resolves on "hello" or "world" or "im" or "batman" in chat by flatbot
-  await bot.awaitMessage('<flatbot> hello', '<flatbot> world') // resolves on "hello" or "world" in chat by flatbot
-  await bot.awaitMessage(/<flatbot> (.+)/) // resolves on first message matching the regex
+async function wait() {
+  await bot.awaitMessage("<flatbot> hello world"); // resolves on "hello world" in chat by flatbot
+  await bot.awaitMessage(["<flatbot> hello", "<flatbot> world"]); // resolves on "hello" or "world" in chat by flatbot
+  await bot.awaitMessage(["<flatbot> hello", "<flatbot> world"], ["<flatbot> im", "<flatbot> batman"]); // resolves on "hello" or "world" or "im" or "batman" in chat by flatbot
+  await bot.awaitMessage("<flatbot> hello", "<flatbot> world"); // resolves on "hello" or "world" in chat by flatbot
+  await bot.awaitMessage(/<flatbot> (.+)/); // resolves on first message matching the regex
 }
 ```
 
@@ -1762,29 +1815,30 @@ See the `bot.settings` property.
 
 Injects a Plugin. Does nothing if the plugin is already loaded.
 
- * `plugin` - function
+- `plugin` - function
 
 ```js
-function somePlugin (bot, options) {
-  function someFunction () {
-    bot.chat('Yay!')
+function somePlugin(bot, options) {
+  function someFunction() {
+    bot.chat("Yay!");
   }
 
-  bot.myPlugin = {} // Good practice to namespace plugin API
-  bot.myPlugin.someFunction = someFunction
+  bot.myPlugin = {}; // Good practice to namespace plugin API
+  bot.myPlugin.someFunction = someFunction;
 }
 
-const bot = mineflayer.createBot({})
-bot.loadPlugin(somePlugin)
-bot.once('login', function () {
-  bot.myPlugin.someFunction() // Yay!
-})
+const bot = mineflayer.createBot({});
+bot.loadPlugin(somePlugin);
+bot.once("login", function () {
+  bot.myPlugin.someFunction(); // Yay!
+});
 ```
 
 #### bot.loadPlugins(plugins)
 
 Injects plugins see `bot.loadPlugin`.
- * `plugins` - array of functions
+
+- `plugins` - array of functions
 
 #### bot.hasPlugin(plugin)
 
@@ -1812,14 +1866,14 @@ This is the main method controlling the bot movements. It works similarly to pre
 For example forward with state true will make the bot move forward. Forward with state false will make the bot stop moving forward.
 You may use bot.lookAt in conjunction with this to control movement. The jumper.js example shows how to use this.
 
- * `control` - one of ['forward', 'back', 'left', 'right', 'jump', 'sprint', 'sneak']
- * `state` - `true` or `false`
+- `control` - one of ['forward', 'back', 'left', 'right', 'jump', 'sprint', 'sneak']
+- `state` - `true` or `false`
 
 #### bot.getControlState(control)
 
 Returns true if a control state is toggled.
 
-* `control` - one of ['forward', 'back', 'left', 'right', 'jump', 'sprint', 'sneak']
+- `control` - one of ['forward', 'back', 'left', 'right', 'jump', 'sprint', 'sneak']
 
 #### bot.clearControlStates()
 
@@ -1830,17 +1884,17 @@ Sets all controls to off.
 Returns how much damage will be done to the entity in a radius around the position of the explosion.
 It will return `null` if the entity has no armor and rawDamages is not set to true, since the function can't calculate the damage with armor if there is no armor.
 
-* `entity` - Entity instance
-* `position` - [Vec3](https://github.com/andrewrk/node-vec3) instance
-* `radius` - the explosion radius as a number
-* `rawDamages` - optional, if true it ignores armor in the calculation
+- `entity` - Entity instance
+- `position` - [Vec3](https://github.com/andrewrk/node-vec3) instance
+- `radius` - the explosion radius as a number
+- `rawDamages` - optional, if true it ignores armor in the calculation
 
 #### bot.lookAt(point, [force])
 
 This function returns a `Promise`, with `void` as its argument when you are looking at `point`.
 
- * `point` [Vec3](https://github.com/andrewrk/node-vec3) instance - tilts your head so that it is directly facing this point.
- * `force` - See `force` in `bot.look`
+- `point` [Vec3](https://github.com/andrewrk/node-vec3) instance - tilts your head so that it is directly facing this point.
+- `force` - See `force` in `bot.look`
 
 #### bot.look(yaw, pitch, [force])
 
@@ -1848,14 +1902,14 @@ This function returns a `Promise`, with `void` as its argument called when you a
 
 Set the direction your head is facing.
 
- * `yaw` - The number of radians to rotate around the vertical axis, starting
-   from due east. Counter clockwise.
- * `pitch` - Number of radians to point up or down. 0 means straight forward.
-   pi / 2 means straight up. -pi / 2 means straight down.
- * `force` - If present and true, skips the smooth server-side transition.
-   Specify this to true if you need the server to know exactly where you
-   are looking, such as for dropping items or shooting arrows. This is not
-   needed for client-side calculation such as walking direction.
+- `yaw` - The number of radians to rotate around the vertical axis, starting
+  from due east. Counter clockwise.
+- `pitch` - Number of radians to point up or down. 0 means straight forward.
+  pi / 2 means straight up. -pi / 2 means straight down.
+- `force` - If present and true, skips the smooth server-side transition.
+  Specify this to true if you need the server to know exactly where you
+  are looking, such as for dropping items or shooting arrows. This is not
+  needed for client-side calculation such as walking direction.
 
 #### bot.updateSign(block, text, back = false)
 
@@ -1867,14 +1921,14 @@ This function returns a `Promise`, with `void` as its argument when you have suc
 
 Equips an item from your inventory. If the argument `item` is of Instance `Item` equip will equip this specific item from its window slot. If the argument `item` is of type `number` equip will equip the first item found with that id searched by rising slot id (Hotbar is searched last. Armor, crafting, crafting result and off-hand slots are excluded).
 
- * `item` - `Item` instance or `number` for item id. See `window.items()`.
- * `destination`
-   - `"hand"` - `null` aliases to this
-   - `"head"`
-   - `"torso"`
-   - `"legs"`
-   - `"feet"`
-   - `"off-hand"` - when available
+- `item` - `Item` instance or `number` for item id. See `window.items()`.
+- `destination`
+  - `"hand"` - `null` aliases to this
+  - `"head"`
+  - `"torso"`
+  - `"legs"`
+  - `"feet"`
+  - `"off-hand"` - when available
 
 #### bot.unequip(destination)
 
@@ -1886,24 +1940,28 @@ Remove an article of equipment.
 
 This function returns a `Promise`, with `void` as its argument when tossing is done.
 
- * `item` - the stack of items you wish to toss
-   truthy, you were not able to complete the toss.
+- `item` - the stack of items you wish to toss
+  truthy, you were not able to complete the toss.
 
 #### bot.toss(itemType, metadata, count)
 
 This function returns a `Promise`, with `void` as its argument once tossing is complete.
 
- * `itemType` - numerical id of the item you wish to toss
- * `metadata` - metadata of the item you wish to toss. Use `null`
-   to match any metadata
- * `count` - how many you want to toss. `null` is an alias for `1`.
+- `itemType` - numerical id of the item you wish to toss
+- `metadata` - metadata of the item you wish to toss. Use `null`
+  to match any metadata
+- `count` - how many you want to toss. `null` is an alias for `1`.
 
-#### bot.elytraFly()
+#### bot.elytraFly([options])
 
 This function returns a `Promise`, with `void` as its argument once activating
 elytra flight is complete. It will throw an Error if it fails.
 
-#### bot.dig(block, [forceLook], [digFace])
+- `options` - (optional) either a boolean shorthand for `assistTakeoff`, or an object with:
+- `assistTakeoff` - (optional) defaults to `false`. When `true`, temporarily manages jump and movement input to help start elytra flight.
+- `force` - (optional) defaults to `false`. When `true`, does not reject the request just because the local state already says the bot is elytra flying.
+
+#### bot.dig(block, [forceLook = true], [digFace])
 
 This function returns a `Promise`, with `void` as its argument when the block is broken or you are interrupted.
 
@@ -1914,10 +1972,10 @@ Note that once you begin digging into a block, you may not
 dig any other blocks until the block has been broken, or you call
 `bot.stopDigging()`.
 
- * `block` - the block to start digging into
- * `forceLook` - (optional) if true, the bot snaps its head to the block and starts mining instantly. If false or omitted, the bot turns its head to the block at its normal look rate and waits for the turn to finish before digging. Can also be assigned 'ignore' to prevent the bot from moving its head at all.
- * `digFace` - (optional) Default is 'auto' looks at the center of the block and mines the top face. Can also be a vec3 vector
- of the face the bot should be looking at when digging the block. For example: ```vec3(0, 1, 0)``` when mining the top. Can also be 'raycast' raycast checks if there is a face visible by the bot and mines that face. Useful for servers with anti cheat.
+- `block` - the block to start digging into
+- `forceLook` - (optional) if true, look at the block and start mining instantly. If false, the bot will slowly turn to the block to mine. Additionally, this can be assigned to 'ignore' to prevent the bot from moving its head at all. Also, this can be assigned to 'raycast' to raycast from the bots head to place where the bot is looking.
+- `digFace` - (optional) Default is 'auto' looks at the center of the block and mines the top face. Can also be a vec3 vector
+  of the face the bot should be looking at when digging the block. For example: `vec3(0, 1, 0)` when mining the top. Can also be 'raycast' raycast checks if there is a face visible by the bot and mines that face. Useful for servers with anti cheat.
 
 If you call bot.dig twice before the first dig is finished, you will get a fatal 'diggingAborted' error.
 
@@ -1939,9 +1997,9 @@ Denies resource pack.
 
 This function returns a `Promise`, with `void` as its argument when the server confirms that the block has indeed been placed.
 
- * `referenceBlock` - the block you want to place a new block next to
- * `faceVector` - one of the six cardinal directions, such as `new Vec3(0, 1, 0)` for the top face,
-   indicating which face of the `referenceBlock` to place the block against.
+- `referenceBlock` - the block you want to place a new block next to
+- `faceVector` - one of the six cardinal directions, such as `new Vec3(0, 1, 0)` for the top face,
+  indicating which face of the `referenceBlock` to place the block against.
 
 The new block will be placed at `referenceBlock.position.plus(faceVector)`.
 
@@ -1949,9 +2007,9 @@ The new block will be placed at `referenceBlock.position.plus(faceVector)`.
 
 This function returns a `Promise`, with `Entity` as its argument upon completion.
 
- * `referenceBlock` - the block you want to place the entity next to
- * `faceVector` - one of the six cardinal directions, such as `new Vec3(0, 1, 0)` for the top face,
-   indicating which face of the `referenceBlock` to place the block against.
+- `referenceBlock` - the block you want to place the entity next to
+- `faceVector` - one of the six cardinal directions, such as `new Vec3(0, 1, 0)` for the top face,
+  indicating which face of the `referenceBlock` to place the block against.
 
 The new block will be placed at `referenceBlock.position.plus(faceVector)`.
 
@@ -1961,9 +2019,9 @@ This function returns a `Promise`, with `void` as its argument upon completion.
 
 Punch a note block, open a door, etc.
 
- * `block` - the block to activate
- * `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
- * `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
+- `block` - the block to activate
+- `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
+- `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
 
 #### bot.activateEntity(entity)
 
@@ -1971,7 +2029,7 @@ This function returns a `Promise`, with `void` as its argument upon completion.
 
 Activate an entity, useful for villager for example.
 
- * `entity` - the entity to activate
+- `entity` - the entity to activate
 
 #### bot.activateEntityAt(entity, position)
 
@@ -1979,8 +2037,8 @@ This function returns a `Promise`, with `void` as its argument upon completion.
 
 Activate an entity at the given position, useful for armor stands.
 
- * `entity` - the entity to activate
- * `position` - the world position to click at
+- `entity` - the entity to activate
+- `position` - the world position to click at
 
 #### bot.consume()
 
@@ -1988,13 +2046,11 @@ This function returns a `Promise`, with `void` as its argument when consume ends
 
 Eat / drink currently held item
 
-
 #### bot.fish()
 
 This function returns a `Promise`, with `void` as its argument when fishing ends.
 
 Use fishing rod
-
 
 #### bot.activateItem(offHand=false)
 
@@ -2016,15 +2072,15 @@ use shears.
 
 Attack a player or a mob.
 
- * `entity` is a type of entity. To get a specific entity use [bot.nearestEntity()](#botnearestentitymatch--entity---return-true-) or [bot.entities](#botentities).
- * `swing` Default to `true`. If false the bot does not swing its arm when attacking.
+- `entity` is a type of entity. To get a specific entity use [bot.nearestEntity()](#botnearestentitymatch--entity---return-true-) or [bot.entities](#botentities).
+- `swing` Default to `true`. If false the bot does not swing its arm when attacking.
 
 #### bot.swingArm([hand], showHand)
 
 Play an arm swing animation.
 
- * `hand` can take `left` or `right` which is the arm that is animated. Default: `right`
- * `showHand` is a boolean whether to add the hand to the packet, Default: `true`
+- `hand` can take `left` or `right` which is the arm that is animated. Default: `right`
+- `showHand` is a boolean whether to add the hand to the packet, Default: `true`
 
 #### bot.mount(entity)
 
@@ -2038,40 +2094,41 @@ Dismounts from the vehicle you are in.
 
 Moves the vehicle :
 
- * left can take -1 or 1 : -1 means right, 1 means left
- * forward can take -1 or 1 : -1 means backward, 1 means forward
+- left can take -1 or 1 : -1 means right, 1 means left
+- forward can take -1 or 1 : -1 means backward, 1 means forward
 
 All the direction are relative to where the bot is looking at
 
 #### bot.setQuickBarSlot(slot)
 
- * `slot` - 0-8 the quick bar slot to select.
+- `slot` - 0-8 the quick bar slot to select.
 
 #### bot.craft(recipe, count, craftingTable)
 
 This function returns a `Promise`, with `void` as its argument when the crafting is complete and your inventory is updated.
 
- * `recipe` - A `Recipe` instance. See `bot.recipesFor`.
- * `count` - How many times you wish to perform the operation.
-   If you want to craft planks into `8` sticks, you would set
-   `count` to `2`. `null` is an alias for `1`.
- * `craftingTable` - A `Block` instance, the crafting table you wish to
-   use. If the recipe does not require a crafting table, you may use
-   `null` for this argument.
+- `recipe` - A `Recipe` instance. See `bot.recipesFor`.
+- `count` - How many times you wish to perform the operation.
+  If you want to craft planks into `8` sticks, you would set
+  `count` to `2`. `null` is an alias for `1`.
+- `craftingTable` - A `Block` instance, the crafting table you wish to
+  use. If the recipe does not require a crafting table, you may use
+  `null` for this argument.
 
 #### bot.writeBook(slot, pages)
 
 This function returns a `Promise`, with `void` as its argument when the writing was successfully or an error occurred.
 
- * `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
- * `pages` is an array of strings represents the pages.
+- `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
+- `pages` is an array of strings represents the pages.
 
 #### bot.openContainer(containerBlock or containerEntity, direction?, cursorPos?)
+
 Opens a block container or entity.
 
- * `containerBlock` or `containerEntity` The block instance to open or the entity to open.
- * `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
- * `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
+- `containerBlock` or `containerEntity` The block instance to open or the entity to open.
+- `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
+- `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
 
 Returns a promise on a `Container` instance which represents the container you are opening.
 
@@ -2111,6 +2168,7 @@ Uses the open `villagerInstance` to trade.
 
 Set a command block's properties at `pos`.
 Example `options` argument:
+
 ```js
 {
   mode: 2,
@@ -2119,6 +2177,7 @@ Example `options` argument:
   alwaysActive: true
 }
 ```
+
 options.mode can have 3 values: 0 (SEQUENCE), 1 (AUTO), 2 (REDSTONE)
 All options attributes are false by default, except mode which is 2 (as to replicate the default command block in Minecraft).
 
@@ -2145,22 +2204,23 @@ These are lower level methods for the inventory, they can be useful sometimes bu
 This function returns a `Promise`, with `void` as its argument upon completion.
 
 mode support:
-  - stable:
-    - mouse clicks (0)
 
-  - experimental:
-    - shift clicks (1)
-    - number clicks (2)
-    - middle clicks (3)
-    - drop clicks (4)
+- stable:
+  - mouse clicks (0)
 
-  - unimplemented:
-    - drag clicks (5)
-    - double clicks (6)
+- experimental:
+  - shift clicks (1)
+  - number clicks (2)
+  - middle clicks (3)
+  - drop clicks (4)
+
+- unimplemented:
+  - drag clicks (5)
+  - double clicks (6)
 
 Click on the current window. See details at https://minecraft.wiki/w/Protocol#Click_Container
 
-Prefer using bot.simpleClick.*
+Prefer using bot.simpleClick.\*
 
 #### bot.putSelectedItemRange(start, end, window, slot)
 
@@ -2184,27 +2244,27 @@ This function returns a `Promise`, with `void` as its argument upon completion.
 
 Transfer some kind of item from one range to an other. `options` is an object containing :
 
- * `window` : Optional. the window where the item will be moved
- * `itemType` : the type of the moved items
- * `metadata` : Optional. the metadata of the moved items
- * `sourceStart` and `sourceEnd` : the source range. `sourceEnd` is optional and will default to `sourceStart` + 1
- * `destStart` and `destEnd` : the dest Range. `destEnd` is optional and will default to `destStart` + 1
- * `count` : the amount of items to transfer. Default: `1`
- * `nbt` : nbt data of the item to transfer. Default: `nullish` (ignores nbt)
+- `window` : Optional. the window where the item will be moved
+- `itemType` : the type of the moved items
+- `metadata` : Optional. the metadata of the moved items
+- `sourceStart` and `sourceEnd` : the source range. `sourceEnd` is optional and will default to `sourceStart` + 1
+- `destStart` and `destEnd` : the dest Range. `destEnd` is optional and will default to `destStart` + 1
+- `count` : the amount of items to transfer. Default: `1`
+- `nbt` : nbt data of the item to transfer. Default: `nullish` (ignores nbt)
 
 #### bot.openBlock(block, direction?: Vec3, cursorPos?: Vec3)
 
 Open a block, for example a chest, returns a promise on the opening `Window`.
 
- * `block` is the block the bot will open.
- * `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
- * `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
+- `block` is the block the bot will open.
+- `direction` Optional defaults to `new Vec3(0, 1, 0)` (up). A vector off the direction the container block should be interacted with. Does nothing when a container entity is targeted.
+- `cursorPos` Optional defaults to `new Vec3(0.5, 0.5, 0.5)` (block center). The curos position when opening the block instance. This is send with the activate block packet. Does nothing when a container entity is targeted.
 
 #### bot.openEntity(entity)
 
 Open an entity with an inventory, for example a villager, returns a promise on the opening `Window`.
 
- * `entity` is the entity the bot will open
+- `entity` is the entity the bot will open
 
 #### bot.moveSlotItem(sourceSlot, destSlot)
 
@@ -2221,12 +2281,13 @@ Update `bot.heldItem`.
 Gets the inventory equipment slot id for the given equipment destination name.
 
 Available destinations are:
-* head
-* torso
-* legs
-* feet
-* hand
-* off-hand
+
+- head
+- torso
+- legs
+- feet
+- hand
+- off-hand
 
 ### bot.creative
 
@@ -2240,9 +2301,9 @@ This function returns a `Promise`, with `void` as its argument when gets fired w
 
 Gives the bot the specified item in the specified inventory slot.
 
- * `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
- * `item` is a [prismarine-item](https://github.com/PrismarineJS/prismarine-item) instance specified with arbitrary metadata, nbtdata, etc.
-    If `item` is `null`, the item at the specified slot is deleted.
+- `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
+- `item` is a [prismarine-item](https://github.com/PrismarineJS/prismarine-item) instance specified with arbitrary metadata, nbtdata, etc.
+  If `item` is `null`, the item at the specified slot is deleted.
 
 If this method changes anything, you can be notified via `bot.inventory.on("updateSlot")`.
 
@@ -2252,7 +2313,7 @@ This function returns a `Promise`, with `void` as its argument when gets fired w
 
 Makes the sets the item in the slot given to null.
 
- * `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
+- `slot` is in inventory window coordinates (where 36 is the first quickbar slot, etc.).
 
 #### bot.creative.clearInventory()
 

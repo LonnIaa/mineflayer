@@ -215,6 +215,9 @@ for (const supportedVersion of mineflayer.testedVersions) {
           pitch: 14,
           headPitch: 14,
           velocity: { x: 15, y: 16, z: 17 },
+          velocityX: 16,
+          velocityY: 17,
+          velocityZ: 18,
           metadata: []
         })
         client.write('entity_effect', {
@@ -685,7 +688,10 @@ for (const supportedVersion of mineflayer.testedVersions) {
               yaw: 0,
               headPitch: 0,
               objectData: 1,
-              velocity: { x: 0, y: 0, z: 0 }
+              velocity: { x: 0, y: 0, z: 0 },
+              velocityX: 0,
+              velocityY: 0,
+              velocityZ: 0
             })
           } else {
             client.write('named_entity_spawn', {
@@ -933,7 +939,10 @@ for (const supportedVersion of mineflayer.testedVersions) {
               yaw: 0,
               headPitch: 0,
               objectData: 1,
-              velocity: { x: 0, y: 0, z: 0 }
+              velocity: { x: 0, y: 0, z: 0 },
+              velocityX: 0,
+              velocityY: 0,
+              velocityZ: 0
             })
           } else {
             client.write('named_entity_spawn', {
@@ -987,6 +996,9 @@ for (const supportedVersion of mineflayer.testedVersions) {
             pitch: 14,
             headPitch: 14,
             velocity: { x: 15, y: 16, z: 17 },
+            velocityX: 16,
+            velocityY: 17,
+            velocityZ: 18,
             metadata: [
               { type: 0, key: bot.registry.supportFeature('mcDataHasEntityMetadata') ? 'byte' : 0, value: 0 },
               { type: 0, key: bot.registry.supportFeature('mcDataHasEntityMetadata') ? 'int' : 1, value: 1 }
@@ -1032,7 +1044,10 @@ for (const supportedVersion of mineflayer.testedVersions) {
             yaw: 0,
             headPitch: 0,
             objectData: 1,
-            velocity: { x: 0, y: 0, z: 0 }
+            velocity: { x: 0, y: 0, z: 0 },
+            velocityX: 0,
+            velocityY: 0,
+            velocityZ: 0
           })
 
           const metadataPacket = {
@@ -1171,6 +1186,9 @@ for (const supportedVersion of mineflayer.testedVersions) {
           pitch: 0,
           headPitch: 0,
           velocity: { x: 0, y: 0, z: 0 },
+          velocityX: 0,
+          velocityY: 0,
+          velocityZ: 0,
           metadata: []
         })
 
